@@ -16,13 +16,17 @@ const StyledH2 = styled.h2`
   font-size: 24px;
 `;
 
+const StyledDiv = styled.div`
+  margin: 0 0 10px 0;
+`;
+
 function App() {
   const initialUserList = [];
   const initialUserValues = {
     userName: "",
     userPassword: "",
     userEmail: "",
-    tos: "",
+    tos: false,
   }
   const initialFormErrors = {
     userName: "",
@@ -30,7 +34,7 @@ function App() {
     userEmail: "",
     tos: "",
   }
-  const initialDisabled = true;
+  const initialDisabled = false;
 
   const [userValues, setUserValues] = useState(initialUserValues);
   const [users, setUsers] = useState(initialUserList);
@@ -81,7 +85,11 @@ function App() {
   useEffect(() => {
     formSchema.isValid(userValues)
       .then(valid => {
-        setDisabled(!valid)
+        if (userValues.tos === true) {
+          setDisabled(!valid)
+        } else {
+          setDisabled(true)
+        }
       })
     }, [userValues])
 
@@ -94,11 +102,11 @@ function App() {
       <br></br>
     {
       users.map(user => (
-        <div>
+        <StyledDiv className="user">
           <StyledH2>{user.username}</StyledH2>
           <p>Password: {user.userPassword}</p>
           <p>Email: {user.email}</p>
-        </div>
+        </StyledDiv>
       ))
     }
 

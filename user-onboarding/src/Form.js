@@ -38,7 +38,7 @@ export default function Form(props) {
             <label>I agree to the Terms of Service&nbsp;
                 <StyledInput type="checkbox" name="tos" checked={values.tos} onChange={onCheckboxChange}></StyledInput>
             </label>
-            <StyledButton disabled={disabled}>Sign Up</StyledButton>
+            <StyledButton disabled={disabled} className="submit">Sign Up</StyledButton>
             <div className="errors">
                 <StyledDiv>{errors.userName}</StyledDiv>
                 <StyledDiv>{errors.userPassword}</StyledDiv>

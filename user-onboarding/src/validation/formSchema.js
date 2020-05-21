@@ -13,7 +13,7 @@ const formSchema = yup.object().shape({
         .trim()
         .email("The email must be a valid email.")
         .required("The email is a required field."),
-    tos: yup.string()
+    tos: yup.boolean()
         .required("You must agree to the Terms of Service."),
 })
 
